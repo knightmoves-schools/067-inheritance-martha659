@@ -1,25 +1,49 @@
-class Company{
-    constructor(name, taxId, yearEstablished, taxRate){
-        this.name = name;
-        this.id = taxId;
-        this.year = yearEstablished;
-        this.taxRate = taxRate;
-    }
+class Agable {
+constructor(year) {
+this.year = year;
 }
 
-class Person{
-    constructor(name, ssn, birthYear, taxRate){
-        this.name = name;
-        this.id = ssn;
-        this.year = birthYear;
-        this.taxRate = taxRate;
-    }
+age() {
+const currentYear = new Date().getFullYear();
+return currentYear - this.year;
+}
 }
 
-class Car{
-    constructor(model, vin, year){
-        this.name = model;
-        this.id = vin;
-        this.year = year;
-    }
+class Company {
+constructor(name, yearEstablished) {
+this.name = name;
+this.agable = new Agable(yearEstablished);
 }
+
+age() {
+return this.agable.age();
+}
+}
+
+class Person {
+constructor(firstName, lastName, birthYear) {
+this.firstName = firstName;
+this.lastName = lastName;
+this.agable = new Agable(birthYear);
+}
+
+age() {
+return this.agable.age();
+}
+}
+
+class Car {
+constructor(make, model, year) {
+this.make = make;
+this.model = model;
+this.agable = new Agable(year);
+}
+
+age() {
+return this.agable.age();
+}
+}
+
+const company = new Company("TechCorp", 2005);
+const person = new Person("Jane", "Doe", 1995);
+const car = new Car("Toyota", "Camry", 2018);
