@@ -4,46 +4,32 @@ this.year = year;
 }
 
 age() {
-const currentYear = new Date().getFullYear();
-return currentYear - this.year;
+return new Date().getFullYear() - this.year;
 }
 }
 
-class Company {
-constructor(name, yearEstablished) {
+class Company extends Agable {
+constructor(name,taxId, yearEstablished, taxRate) {
+super(yearEstablished)
+    this.name = name;
+    this.id. = taxId;
+this.taxRate = taxRate;
+}
+}
+class Person extends Agable{
+constructor(name, ssn, birthYear, taxrate) {
+super(birthYear)
 this.name = name;
-this.agable = new Agable(yearEstablished);
-}
-
-age() {
-return this.agable.age();
+this.id = ssn;
+this.taxrate = taxRate;
 }
 }
 
-class Person {
-constructor(firstName, lastName, birthYear) {
-this.firstName = firstName;
-this.lastName = lastName;
-this.agable = new Agable(birthYear);
-}
-
-age() {
-return this.agable.age();
+class Car extends Agable{
+constructor(model, vin, year) {
+super(year)
+this.name = model;
+this.id = vin;
 }
 }
 
-class Car {
-constructor(make, model, year) {
-this.make = make;
-this.model = model;
-this.agable = new Agable(year);
-}
-
-age() {
-return this.agable.age();
-}
-}
-
-const company = new Company("TechCorp", 2005);
-const person = new Person("Jane", "Doe", 1995);
-const car = new Car("Toyota", "Camry", 2018);
